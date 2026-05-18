@@ -1,51 +1,2023 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    body {background-color: #0a0c10}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 30.0px 'Apple Color Emoji'; color: #e2e7ef; -webkit-text-stroke: #e2e7ef}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 15.6px 'PingFang SC Light'; color: #e2e7ef; -webkit-text-stroke: #e2e7ef}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.6px 'PingFang SC'; color: #3a4355; -webkit-text-stroke: #3a4355}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 10.2px 'PingFang SC'; color: #5977c3; -webkit-text-stroke: #5977c3}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.0px 'PingFang SC'; color: #dc5c60; -webkit-text-stroke: #dc5c60}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang SC'; color: #e2e7ef; -webkit-text-stroke: #e2e7ef; min-height: 17.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 42.0px 'PingFang SC Light'; color: #e2e7ef; -webkit-text-stroke: #e2e7ef}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang SC'; color: #778397; -webkit-text-stroke: #778397}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 10.8px 'PingFang SC'; color: #5977c3; -webkit-text-stroke: #5977c3}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.6px 'PingFang SC'; color: #778397; -webkit-text-stroke: #778397}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.2px 'Zapf Dingbats'; color: #778397; -webkit-text-stroke: #778397}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.2px Menlo; color: #778397; -webkit-text-stroke: #778397}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.2px 'Apple Symbols'; color: #778397; -webkit-text-stroke: #778397}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #778397; -webkit-text-stroke: #778397}
-    span.s1 {font-kerning: none; background-color: #0a0c10}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: rgba(14, 18, 29, 0.8)}
-    span.s4 {font: 12.0px 'PingFang SC'; font-kerning: none; color: #e2e7ef; -webkit-text-stroke: 0px #e2e7ef}
-    span.s5 {font: 16.8px 'Zapf Dingbats'; font-kerning: none; color: #5977c3; background-color: rgba(14, 18, 29, 0.9); -webkit-text-stroke: 0px #5977c3}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的奥德赛时期</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<style>
+:root {
+  --bg-deep: #0a0d14;
+  --bg-card: #111827;
+  --bg-card-hover: #1a2235;
+  --text-primary: #e8ecf2;
+  --text-secondary: #8a96a8;
+  --text-muted: #4a5568;
+  --accent: #6b8cce;
+  --accent-glow: rgba(107,140,206,0.35);
+  --border: rgba(107,140,206,0.18);
+  --star-color: rgba(255,255,255,0.85);
+  --gold: #c9a96e;
+  --day-hue: 210;
+  --font-main: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --page-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(107,140,206,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  user-select: none;
+}
+
+#star-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#cover {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+#cover.fade-out { opacity: 0; visibility: hidden; }
+
+.cover-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s forwards;
+}
+.cover-subtitle {
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  letter-spacing: 0.5em;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeUp 1.2s 1s forwards;
+}
+.cover-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 2s 1.5s forwards;
+}
+.cover-waves svg { width: 100%; height: 100%; }
+
+.cover-enter {
+  margin-top: 3rem;
+  padding: 0.7em 2.5em;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeUp 1s 2s forwards;
+  transition: var(--transition);
+}
+.cover-enter:hover {
+  background: rgba(107,140,206,0.1);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==================== TOP BAR ==================== */
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: linear-gradient(to bottom, var(--bg-deep) 60%, transparent);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+#topbar.visible { opacity: 1; }
+
+#progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
+#progress-dots { display: flex; gap: 6px; }
+.pdot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: 0.3s;
+}
+.pdot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.pdot.done { background: rgba(107,140,206,0.4); }
+
+.top-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.top-btn:hover { color: var(--accent); background: rgba(107,140,206,0.1); }
+
+/* ==================== BOOK CONTAINER ==================== */
+#book {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  perspective: 2000px;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 40px;
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 680px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: 3rem 3.5rem;
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--page-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.page-inner::-webkit-scrollbar { width: 4px; }
+.page-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ==================== PAGE TRANSITIONS ==================== */
+.page-enter { animation: pageEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.page-exit { animation: pageExit 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateX(60px) scale(0.97); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes pageExit {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to { opacity: 0; transform: translateX(-60px) scale(0.97); }
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+.entry-date {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.entry-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.entry-section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.entry-section-label::before {
+  content: '✦';
+  font-size: 0.6rem;
+}
+.entry-body {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+.entry-body:first-of-type { color: var(--text-primary); }
+.entry-quote {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  margin-top: 1rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(107,140,206,0.05);
+  border-radius: 0 8px 8px 0;
+}
+.entry-divider {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.5em;
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+
+/* Insight cards - 慢慢想明白 页面 (卡片列表) */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.insight-card {
+  padding: 1.5rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.insight-card:hover {
+  border-color: rgba(107,140,206,0.35);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.insight-card::after {
+  content: '→';
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.insight-card:hover::after { opacity: 1; }
+.insight-meta {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+.insight-quote {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-style: italic;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* Insight detail modal - 独立详情弹窗 */
+#insight-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+#insight-modal.open { display: flex; }
+.insight-modal-inner {
+  background: var(--bg-primary);
+  width: 100%;
+  max-width: 620px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 18px;
+  padding: 2.5rem 2.8rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 64px rgba(0,0,0,0.4);
+  animation: insightIn 0.3s ease;
+}
+@keyframes insightIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.insight-modal-inner::-webkit-scrollbar { width: 4px; }
+.insight-modal-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.insight-modal-meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.insight-modal-quote {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding: 1.2rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(107,140,206,0.06);
+  border-radius: 0 10px 10px 0;
+}
+.insight-modal-text {
+  font-size: 0.92rem;
+  line-height: 2.1;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+.insight-modal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.insight-nav-btn {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.5em 1.2em;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-main);
+  letter-spacing: 0.05em;
+}
+.insight-nav-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(107,140,206,0.06);
+}
+.insight-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.insight-nav-btn:disabled:hover {
+  color: var(--text-muted);
+  border-color: var(--border);
+  background: transparent;
+}
+.insight-nav-counter {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+#insight-close {
+  font-size: 0.82rem;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 0.55em 1.6em;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-main);
+  letter-spacing: 0.05em;
+}
+#insight-close:hover { box-shadow: 0 0 20px var(--accent-glow); }
+
+/* ==================== FLOATING CARDS WALL ==================== */
+#cards-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10, 13, 20, 0.95);
+  backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+}
+#cards-overlay.open { display: flex; }
+
+.cards-wall {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.fcard {
+  padding: 1.5rem;
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: var(--font-main);
+}
+.fcard:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.fcard-meta { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.fcard-quote { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; line-height: 1.5; margin-bottom: 0.8rem; }
+.fcard-ref { font-size: 0.75rem; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+#cards-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(17,24,39,0.9);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 501;
+}
+#cards-close:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+/* Card modal */
+#card-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(10,13,20,0.97);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+#card-modal.open { display: flex; }
+.card-modal-content {
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: left;
+}
+.card-modal-content::-webkit-scrollbar { width: 4px; }
+.card-modal-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.card-modal-quote { font-size: 1.2rem; color: var(--text-primary); font-weight: 500; line-height: 1.7; margin-bottom: 1.5rem; }
+.card-modal-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 2; white-space: pre-line; }
+#card-modal-close { background: var(--accent); border: none; color: #fff; font-size: 0.85rem; padding: 0.6em 1.5em; border-radius: 20px; cursor: pointer; transition: var(--transition); font-family: var(--font-main); }
+#card-modal-close:hover { box-shadow: 0 0 20px var(--accent-glow); }
+
+/* ==================== SEARCH ==================== */
+#search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10,13,20,0.97);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+}
+#search-overlay.open { display: flex; }
+#search-input-wrap {
+  width: 100%;
+  max-width: 560px;
+  padding: 0 1.5rem;
+}
+#search-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  outline: none;
+  transition: var(--transition);
+}
+#search-input:focus { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+#search-results { margin-top: 1rem; }
+.sr-item {
+  padding: 1rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.sr-item:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+.sr-item mark { background: rgba(107,140,206,0.3); color: var(--accent); border-radius: 2px; padding: 0 2px; }
+#search-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(17,24,39,0.9);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 501;
+}
+#search-close:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+/* ==================== NAV ==================== */
+.nav-hint {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+.nav-hint.visible { opacity: 1; pointer-events: auto; }
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(17,24,39,0.8);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-btn:hover { background: var(--bg-card-hover); border-color: var(--accent); color: var(--accent); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* ==================== PRINT ==================== */
+@media print {
+  #topbar, .nav-hint, #cards-overlay, #search-overlay, #card-modal, #insight-modal, .nav-hint, #write-fab, #write-overlay { display: none !important; }
+  .page { position: static; height: auto; padding: 2rem; }
+  .page-inner { max-height: none; overflow: visible; box-shadow: none; border: none; background: white; color: black; }
+}
+
+/* ==================== WRITE PANEL ==================== */
+#write-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: rgba(17,24,39,0.9);
+  color: var(--accent);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(107,140,206,0.3);
+  backdrop-filter: blur(10px);
+}
+#write-fab:hover {
+  background: rgba(107,140,206,0.15);
+  box-shadow: 0 4px 30px rgba(107,140,206,0.5);
+  transform: scale(1.08);
+}
+
+#write-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  background: rgba(10,13,20,0.97);
+  backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+#write-overlay.open { display: flex; }
+
+.write-panel {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+  animation: insightIn 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.write-panel::-webkit-scrollbar { width: 4px; }
+.write-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.write-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.write-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+}
+.write-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+.write-close:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+
+.write-textarea {
+  width: 100%;
+  min-height: 180px;
+  max-height: 50vh;
+  background: rgba(10,13,20,0.6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+.write-textarea:focus { border-color: var(--accent); }
+.write-textarea::placeholder { color: var(--text-muted); }
+
+.write-meta {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.write-category {
+  display: flex;
+  gap: 0.5rem;
+}
+.cat-btn {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.45em 1em;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+.cat-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(107,140,206,0.1);
+}
+.cat-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-secondary); }
+
+.write-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.write-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+.write-submit {
+  font-size: 0.82rem;
+  padding: 0.6em 1.8em;
+  border-radius: 20px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+  letter-spacing: 0.05em;
+}
+.write-submit:hover { box-shadow: 0 0 20px var(--accent-glow); }
+.write-submit:disabled { opacity: 0.4; cursor: default; }
+
+.write-result {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: rgba(107,140,206,0.06);
+  border: 1px solid rgba(107,140,206,0.2);
+  border-radius: 12px;
+  display: none;
+}
+.write-result.show { display: block; }
+.write-result-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.write-result-content {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 640px) {
+  .page { padding: 60px 16px 100px; }
+  .page-inner { padding: 1.8rem 1.3rem; border-radius: 12px; max-height: calc(100vh - 160px); }
+  #topbar { padding: 0 0.8rem; height: 48px; }
+  .top-btn { font-size: 1rem; padding: 0.4rem; }
+  .cards-wall { grid-template-columns: 1fr; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .nav-hint { bottom: 5.5rem; gap: 0.8rem; }
+  .nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+  #write-fab { bottom: 1.2rem; right: 1.2rem; width: 48px; height: 48px; font-size: 1.2rem; }
+  .write-panel { padding: 1.5rem 1.3rem; border-radius: 14px; }
+  .write-textarea { min-height: 150px; font-size: 0.88rem; }
+  .entry-title { font-size: 1.25rem; }
+  .entry-body { font-size: 0.88rem; line-height: 1.9; }
+  .entry-quote { font-size: 0.88rem; padding: 1.2rem 1rem; }
+  .insight-modal-inner { padding: 1.8rem 1.5rem; }
+  .insight-modal-quote { font-size: 1.05rem; padding: 1rem 1.2rem; }
+  .cover-title { font-size: 1.8rem; }
+  .cover-enter { padding: 0.6em 2em; font-size: 0.85rem; }
+  #progress-dots { display: none; }
+}
+
+/* ==================== PASSWORD GATE ==================== */
+#password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#password-gate.unlocked { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.gate-inner {
+  text-align: center;
+  padding: 2rem;
+  max-width: 320px;
+  width: 100%;
+}
+.gate-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.8;
+}
+.gate-title {
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.gate-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+}
+.gate-input {
+  width: 100%;
+  background: rgba(17,24,39,0.8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.15em;
+  transition: border-color 0.3s;
+}
+.gate-input:focus { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+.gate-btn {
+  margin-top: 1.2rem;
+  padding: 0.7em 2.5em;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: var(--transition);
+}
+.gate-btn:hover { background: rgba(107,140,206,0.1); box-shadow: 0 0 20px var(--accent-glow); }
+.gate-error {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: #e57373;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gate-error.show { opacity: 1; }
+
+/* ==================== SHARE CARD ==================== */
+#share-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(10,13,20,0.97);
+  backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  flex-direction: column;
+  overflow-y: auto;
+}
+#share-overlay.open { display: flex; }
+
+.share-card-preview {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.share-card {
+  width: 100%;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(145deg, #0f1923 0%, #1a2a3d 50%, #0d1520 100%);
+  position: relative;
+  overflow: hidden;
+}
+.share-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(107,140,206,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.share-card-quote {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e8ecf2;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 3px solid #6b8cce;
+}
+.share-card-body {
+  font-size: 0.82rem;
+  color: #8a96a8;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+  position: relative;
+  max-height: 200px;
+  overflow: hidden;
+}
+.share-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(107,140,206,0.2);
+  position: relative;
+}
+.share-card-date {
+  font-size: 0.68rem;
+  color: #4a5568;
+  letter-spacing: 0.12em;
+}
+.share-card-brand {
+  font-size: 0.65rem;
+  color: #4a5568;
+  letter-spacing: 0.15em;
+  font-style: italic;
+}
+
+.share-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+.share-btn {
+  font-size: 0.8rem;
+  padding: 0.6em 1.5em;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); }
+.share-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.share-btn.primary:hover { box-shadow: 0 0 20px var(--accent-glow); }
+
+.share-tip {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.share-tip.show { opacity: 1; }
+
+/* 可分享内容的高亮提示 */
+.entry-quote, .entry-body, .insight-quote, .insight-modal-quote {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.entry-quote:active, .entry-body:active, .insight-quote:active {
+  background: rgba(107,140,206,0.08);
+  border-radius: 6px;
+}
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">🔒</span></p>
-<p class="p2"><span class="s1">私密空间</span></p>
-<p class="p3"><span class="s1">请输入密2010码进入</span></p>
-<p class="p4"><span class="s1">进入</span></p>
-<p class="p5"><span class="s1">密码不对，再试试？</span></p>
-<p class="p6"><span class="s2"></span><br></p>
-<p class="p7"><span class="s1">我的奥德赛时期</span></p>
-<p class="p8"><span class="s1">一段漂泊与归途的记录</span></p>
-<p class="p9"><span class="s1">进入奥德赛</span></p>
-<p class="p6"><span class="s2"></span><br></p>
-<p class="p10"><span class="s2">封面</span></p>
-<p class="p11"><span class="s2">✎</span></p>
-<p class="p11"><span class="s2">✦</span></p>
-<p class="p12"><span class="s2">⌕</span></p>
-<p class="p13"><span class="s2">⎙</span></p>
-<p class="p6"><span class="s2"></span><br></p>
-<p class="p14"><span class="s3">←</span><span class="s4"> </span><span class="s3">→</span><span class="s4"> </span><span class="s5">✎</span></p>
+
+<div id="password-gate">
+  <div class="gate-inner">
+    <div class="gate-icon">🔒</div>
+    <div class="gate-title">私密空间</div>
+    <div class="gate-subtitle">请输入密码进入</div>
+    <input type="password" id="gate-input" class="gate-input" placeholder="密码" autocomplete="off" autofocus>
+    <button class="gate-btn" id="gate-btn" onclick="checkPassword()">进入</button>
+    <div class="gate-error" id="gate-error">密码不对，再试试？</div>
+  </div>
+</div>
+
+<canvas id="star-canvas"></canvas>
+
+<!-- Cover -->
+<div id="cover">
+  <div class="cover-title">我的奥德赛时期</div>
+  <div class="cover-subtitle">一段漂泊与归途的记录</div>
+  <button class="cover-enter" onclick="enterBook()">进入奥德赛</button>
+  <div class="cover-waves">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path fill="rgba(107,140,206,0.15)" d="M0,100 C360,160 720,40 1080,100 C1260,130 1380,100 1440,100 L1440,200 L0,200 Z">
+        <animate attributeName="d" dur="8s" repeatCount="indefinite"
+          values="M0,100 C360,160 720,40 1080,100 C1260,130 1380,100 1440,100 L1440,200 L0,200 Z;
+                  M0,100 C360,40 720,160 1080,100 C1260,70 1380,100 1440,100 L1440,200 L0,200 Z;
+                  M0,100 C360,160 720,40 1080,100 C1260,130 1380,100 1440,100 L1440,200 L0,200 Z"/>
+      </path>
+      <path fill="rgba(107,140,206,0.08)" d="M0,120 C480,80 960,160 1440,120 L1440,200 L0,200 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite"
+          values="M0,120 C480,80 960,160 1440,120 L1440,200 L0,200 Z;
+                  M0,120 C480,160 960,80 1440,120 L1440,200 L0,200 Z;
+                  M0,120 C480,80 960,160 1440,120 L1440,200 L0,200 Z"/>
+      </path>
+    </svg>
+  </div>
+</div>
+
+<!-- Top bar -->
+<div id="topbar">
+  <div id="progress-bar">
+    <span id="page-label">封面</span>
+    <div id="progress-dots"></div>
+  </div>
+  <div style="display:flex;gap:0.5rem;">
+    <button class="top-btn" onclick="openWrite()" title="写点什么">✎</button>
+    <button class="top-btn" onclick="openCards()" title="慢慢想明白的事">✦</button>
+    <button class="top-btn" onclick="openSearch()" title="搜索">⌕</button>
+    <button class="top-btn" onclick="window.print()" title="打印">⎙</button>
+  </div>
+</div>
+
+<!-- Book -->
+<div id="book"></div>
+
+<!-- Floating cards wall -->
+<div id="cards-overlay">
+  <button id="cards-close" onclick="closeCards()">✕</button>
+  <div class="cards-wall" id="cards-wall"></div>
+</div>
+
+<!-- Card modal -->
+<div id="card-modal">
+  <div class="card-modal-content" id="card-modal-content">
+    <div class="card-modal-quote" id="card-modal-quote"></div>
+    <div class="card-modal-text" id="card-modal-text"></div>
+    <div style="display:flex;gap:0.8rem;margin-top:2rem;flex-wrap:wrap;">
+      <button id="card-modal-close" onclick="closeCardModal()">关闭</button>
+      <button id="card-share-btn" onclick="shareCurrentCard()" style="margin-top:0;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:0.85rem;padding:0.6em 1.5em;border-radius:20px;cursor:pointer;font-family:var(--font-main);transition:var(--transition);">📷 生成卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- Insight detail modal - 慢慢想明白 独立详情弹窗 -->
+<div id="insight-modal" onclick="if(event.target===this)closeInsightModal()">
+  <div class="insight-modal-inner">
+    <div class="insight-modal-meta" id="insight-modal-meta"></div>
+    <div class="insight-modal-quote" id="insight-modal-quote"></div>
+    <div class="insight-modal-text" id="insight-modal-text"></div>
+    <div class="insight-modal-nav">
+      <button class="insight-nav-btn" id="insight-prev" onclick="navigateInsight(-1)">← 上一条</button>
+      <span class="insight-nav-counter" id="insight-counter"></span>
+      <button class="insight-nav-btn" id="insight-next" onclick="navigateInsight(1)">下一条 →</button>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button id="insight-close" onclick="closeInsightModal()">关闭</button>
+      <button class="insight-nav-btn" style="margin-left:0.8rem;" onclick="openInsightShare(currentInsightIdx)">📷 生成卡片</button>
+    </div>
+  </div>
+</div>
+
+<!-- Search -->
+<div id="search-overlay">
+  <button id="search-close" onclick="closeSearch()">✕</button>
+  <div id="search-input-wrap">
+    <input id="search-input" placeholder="搜索..." oninput="doSearch(this.value)" autofocus>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav-hint" id="nav-hint">
+  <button class="nav-btn" id="prev-btn" onclick="prevPage()">←</button>
+  <button class="nav-btn" id="next-btn" onclick="nextPage()">→</button>
+</div>
+
+<!-- Write FAB -->
+<button id="write-fab" onclick="openWrite()" title="写点什么">✎</button>
+
+<!-- Write Overlay -->
+<div id="write-overlay" onclick="if(event.target===this)closeWrite()">
+
+  <div class="write-panel">
+    <div class="write-header">
+      <div class="write-title">写点什么</div>
+      <button class="write-close" onclick="closeWrite()">✕</button>
+    </div>
+    <textarea class="write-textarea" id="write-input" placeholder="今天发生了什么？你在想什么？&#10;&#10;随便写，我来帮你整理..."></textarea>
+    <div class="write-meta">
+      <div class="write-category">
+        <button class="cat-btn active" id="cat-auto" onclick="setCategory('auto')">🤖 AI 自动分类</button>
+        <button class="cat-btn" id="cat-daily" onclick="setCategory('daily')">📅 每日记录</button>
+        <button class="cat-btn" id="cat-insight" onclick="setCategory('insight')">✦ 想明白的事</button>
+      </div>
+    </div>
+    <div class="write-hint">直接写就好——AI 会根据内容判断放到「每日记录」还是「慢慢想明白的事」。你也可以手动指定。</div>
+    <div class="write-actions">
+      <button class="write-submit" id="write-submit" onclick="submitWrite()">整理并保存 →</button>
+    </div>
+    <div class="write-result" id="write-result">
+      <div class="write-result-title">✓ 已整理</div>
+      <div class="write-result-content" id="write-result-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Share Card Overlay -->
+<div id="share-overlay" onclick="if(event.target===this)closeShare()">
+  <div class="share-card-preview">
+    <div class="share-card" id="share-card-render">
+      <div class="share-card-quote" id="share-card-quote"></div>
+      <div class="share-card-body" id="share-card-body"></div>
+      <div class="share-card-footer">
+        <div class="share-card-date" id="share-card-date"></div>
+        <div class="share-card-brand">我的奥德赛时期</div>
+      </div>
+    </div>
+  </div>
+  <div class="share-actions">
+    <button class="share-btn" onclick="closeShare()">关闭</button>
+    <button class="share-btn primary" onclick="saveShareImage()">保存图片</button>
+  </div>
+  <div class="share-tip" id="share-tip">✓ 图片已生成，长按保存到相册</div>
+</div>
+
+<script>
+// ===== PASSWORD GATE =====
+const PASS_HASH = '5f4dcc3b5aa765d61d8327deb882cf99'; // placeholder
+function simpleHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return hash.toString(36);
+}
+const CORRECT_HASH = simpleHash('201076tuesday');
+
+function checkPassword() {
+  const input = document.getElementById('gate-input').value;
+  if (simpleHash(input) === CORRECT_HASH) {
+    document.getElementById('password-gate').classList.add('unlocked');
+    sessionStorage.setItem('odyssey_unlocked', '1');
+  } else {
+    document.getElementById('gate-error').classList.add('show');
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+    setTimeout(() => document.getElementById('gate-error').classList.remove('show'), 2000);
+  }
+}
+
+// 回车触发
+document.getElementById('gate-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkPassword();
+});
+
+// session 内记住登录状态
+if (sessionStorage.getItem('odyssey_unlocked') === '1') {
+  document.getElementById('password-gate').classList.add('unlocked');
+}
+
+// ===== STAR FIELD =====
+const starCanvas = document.getElementById('star-canvas');
+const sctx = starCanvas.getContext('2d');
+let stars = [];
+
+function initStars() {
+  starCanvas.width = window.innerWidth;
+  starCanvas.height = window.innerHeight;
+  stars = [];
+  for (let i = 0; i < 200; i++) {
+    stars.push({
+      x: Math.random() * starCanvas.width,
+      y: Math.random() * starCanvas.height,
+      r: Math.random() * 1.5,
+      o: Math.random(),
+      speed: 0.002 + Math.random() * 0.005,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+function drawStars(t) {
+  sctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+  stars.forEach(s => {
+    sctx.beginPath();
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    sctx.fillStyle = `rgba(255,255,255,${Math.abs(Math.sin(t * s.speed + s.phase))})`;
+    sctx.fill();
+  });
+}
+
+function animateStars(t) { drawStars(t); requestAnimationFrame(animateStars); }
+initStars();
+window.addEventListener('resize', initStars);
+animateStars(0);
+
+// ===== PAGES DATA =====
+const pages = [
+  {
+    label: '封面',
+    content: `
+      <div style="text-align:center;padding:1rem 0;">
+        <div style="font-size:0.75rem;letter-spacing:0.25em;color:var(--text-muted);margin-bottom:1rem;">2026年4月28日</div>
+        <h1 style="font-size:1.8rem;font-weight:300;letter-spacing:0.15em;color:var(--text-primary);margin-bottom:0.5rem;">我的奥德赛时期</h1>
+        <div style="font-size:0.8rem;color:var(--text-secondary);letter-spacing:0.3em;">一段漂泊与归途的记录</div>
+        <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(107,140,206,0.05);border:1px solid var(--border);border-radius:10px;">
+          <div style="font-size:0.95rem;color:var(--text-primary);line-height:2;font-weight:500;">
+            "这次落地的，已经是一个和上次不一样的你了。"
+          </div>
+        </div>
+        <div style="margin-top:1rem;padding:1.5rem;background:rgba(107,140,206,0.03);border:1px solid var(--border);border-radius:10px;">
+          <div style="font-size:0.88rem;color:var(--text-secondary);line-height:2;font-style:italic;">
+            "奥德修斯航行了十年才到家，<br>我也要走好自己的那段路。"
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    label: '写在开始',
+    content: `
+      <div class="entry-date">INTRO</div>
+      <div class="entry-title">写在开始</div>
+      <div class="entry-body">每个人都有属于自己的奥德赛时期——那是一段看似在迷路、却其实正在找自己的日子。没有确定的目的地，没有清晰的地图，只有风、浪、和一艘不愿靠岸的船。</div>
+      <div class="entry-body">这份记录，是我给自己的一份温柔的档案。不是为了谁看，只为在未来某一天回望时，能对当下的自己说一声："你看，你真的走过来了。"</div>
+      <div class="entry-body">从今天起，我会每天记录一点点——可能是一个瞬间、一种心情、一件小事、一个想通的道理。日子堆起来，就是答案。</div>
+      <div class="entry-divider">— ✦ —</div>
+    `
+  },
+  {
+    label: '4月28日',
+    content: `
+      <div class="entry-date">2026年4月28日 · 周二</div>
+      <div class="entry-title">每日记录</div>
+
+      <div class="entry-section-label">【今日心境】</div>
+      <div class="entry-body">今天到目前为止都比较平静，但平静下面藏着一点紧张——马上要需求评审了。紧张是真的，但好像也没到慌的地步。像是暴风雨前那种把一切都摊开来等一等的感觉。</div>
+      <div class="entry-body">内心另一层，是隔着一段距离的恍惚。那件事情已经过去一个月了，可回头看，真的有种恍如隔世的错觉。时间过得很慢，也很快。</div>
+
+      <div class="entry-section-label">【今日记事】</div>
+      <div class="entry-body">▸ 上午和 Nick 讨论五一去哪里玩。讨论来讨论去、绕了一大圈，最后还是回到泰国🇹🇭——不想把所有时间都花在越南。两个人认真地讨论了半天，得出了一个本来就想好的答案，真的是挺好笑的。</div>
+      <div class="entry-body">▸ 偷偷看了一眼内审的调查文档，昨晚有人看过了。不知道什么时候出结果，心里做好了可能要留处分的准备。但事情发生到现在，已经过去一个月，像是很久远的事了。</div>
+      <div class="entry-body">▸ 下午准备面对需求评审。稳住。</div>
+      <div class="entry-body">▸ 下午的时候，老板突然在微信上发了一句话，然后又立刻撤回了。就那么几秒钟，看见了一行字，还没来得及看清，就消失了。发出的那一刻他是想说点什么的，但他选择不说。这比完全沉默更伤人。</div>
+      <div class="entry-body">▸ 这就是坐冷板凳的感觉吧。以前每天密集的讨论，现在是非必要不沟通。俨然已经变成了一个快要出局的棋子♟️——maybe，已经出局了。虽然早有心理准备，但真的置身于内的时候，还是觉得难以接受。也别无他法。</div>
+
+      <div class="entry-section-label">【给自己的一句话】</div>
+      <div class="entry-quote">紧张也好，恍惚也好，都是真实的。结果会来，日子也会继续——你只需要把今天走完就好。</div>
+    `
+  },
+  {
+    label: '4月29日',
+    content: `
+      <div class="entry-date">2026年4月29日 · 周三</div>
+      <div class="entry-title">每日记录</div>
+
+      <div class="entry-section-label">【今日心境】</div>
+      <div class="entry-body">比昨天更清醒了一点。清醒不是释怀，是不再期待"surprise"。</div>
+
+      <div class="entry-section-label">【今日记事】</div>
+      <div class="entry-body">▸ 早上又和 Nick 讨论五一去哪。理想行程是泰国🇹🇭 + 越南富国岛🇻🇳，但行程太临时了，富国岛来回的机票、签证、路线都赶不上。兜兜转转一圈，可能又要第 N 次落地曼谷了。</div>
+      <div class="entry-body">▸ 以前每次临出发前，总觉得会有 surprise，会有隐藏彩蛋——比如刷出突然降价的机票、比如突然空出来的签证名额。总相信只要多看几眼，生活会悄悄给你留一扇小门。</div>
+      <div class="entry-body">▸ 但现实告诉你：很多事情就是应该什么样子，就是什么样子的。没有彩蛋，没有转机，没有突然降价。旅程的选择是这样，工作里的处境是这样，关系里那些模糊的信号也是这样。</div>
+      <div class="entry-body">▸ 也许长大的一部分，就是慢慢放下"隐藏彩蛋"的期待——不是悲观，是学会接受"本来就该这样"。</div>
+      <div class="entry-body">▸ 说到五一，忽然意识到一件很微妙的事——以前每次放假，都在纠结要不要多休几天，因为好几次都赶上了业务汇报。这次五一仍然有汇报，但因为这次的风波，已经开始坐冷板凳了，大家都在忙，而我忙中偷闲，甚至可以多休几天，不会有人发现。</div>
+      <div class="entry-body">▸ 蛮神奇的体验。有种闹中取静、大隐隐于市的恍惚——一面是被冷落的失落，一面是因此而来的自由。原来同一件事，会同时带来两种完全相反的情绪。</div>
+
+      <div class="entry-section-label">【给自己的一句话】</div>
+      <div class="entry-quote">第 N 次落地曼谷，也没什么不好。熟悉的城市，陌生的你——这次又是不一样的你。</div>
+    `
+  },
+  {
+    label: '5月7日',
+    content: `
+      <div class="entry-date">2026年5月7日 · 周四</div>
+      <div class="entry-title">每日记录</div>
+
+      <div class="entry-section-label">【今日心境】</div>
+      <div class="entry-body">五一回来，像是从一个短暂的梦里醒了过来。身体回到了这座城市，心还在慢慢往回收。不是那种"休息够了、满血复活"的状态——是另一种东西：一种被环境短暂托住之后，轻一点点的、仍然悬着的平静。</div>
+
+      <div class="entry-section-label">【五一·曼谷小记】</div>
+      <div class="entry-body">▸ 这次去曼谷，确实是不一样的感受。以前那些很容易让人开心的事——一杯街边的泰奶、一场舒服的 massage、夜市里随便点的一盘炒河粉——这次都还在，但那种"简单的快乐"好像没有以前那么容易被点亮了。</div>
+      <div class="entry-body">▸ 不是它们不好，是接收它们的那个人，频道变了。快乐还是那个浓度，但自己这边像是蒙了一层很薄的玻璃，所有东西都还能看见，只是隔着一点点距离。</div>
+      <div class="entry-body">▸ 但另一件事反而被放大了——"环境不一样"本身，变成了这趟旅程最大的馈赠。街上的语言听不懂、天气是闷热的、摩托车声音嘈杂、寺庙的金色在夕阳里晃——所有这些陌生的感官，占据了脑子大部分的带宽，于是工作上的那些事，就被挤到很后面去了。</div>
+      <div class="entry-body">▸ 不是忘了，是暂时顾不上想。而这种"顾不上"，比任何"努力不去想"都管用。原来放空不是靠意志力，是靠把自己放进一个需要重新适应的环境里。</div>
+      <div class="entry-body">▸ 有几个瞬间，走在曼谷的某条街上，会忽然有一种"置身事外"的恍惚——像是从自己那部电视剧里短暂地走出来了，站在观众席上看。那一刻，冷板凳、内审、撤回的消息，都暂时变成了别人剧里的情节。</div>
+      <div class="entry-body">▸ 还去拜了四面神。以前从曼谷路过很多次，都只是远远看一眼、觉得热闹而已。这次是真的站到了四个面前，一个一个拜过去——事业、姻缘、财富、健康。说不出具体在求什么，只是那一刻忽然很想把自己交给一点点"我掌控不了的东西"。过去这一个多月里，一直在硬扛、一直在自己兜着，拜的那几分钟，是难得允许自己"不用全部自己扛"的几分钟。</div>
+      <div class="entry-body">▸ 香烛的味道、围拢的人群、金色在暮色里晃——你在里面站着，周围是各种听不懂的祈祷。那一瞬间你忽然明白：人在最不确定的时候，去一个"比自己更大"的东西面前，不是因为迷信，是因为想暂时卸一下那副"什么都得靠自己"的盔甲。</div>
+
+      <div class="entry-section-label">【回来之后】</div>
+      <div class="entry-body">▸ 落地那一刻，剧又把你拉回去了。微信里的未读、工作群里的信息、今天的日程——它们都还在原来的位置等你。</div>
+      <div class="entry-body">▸ 但好像也没关系。即使"简单的快乐"没那么响了，这几天的"被换频道"已经给了我一些底气——至少我知道，那件占据我 90% 的事，在另一个时区、另一种语言、另一碗泰奶的间隙里，是可以暂时不存在的。</div>
+      <div class="entry-body">▸ 原来自由不只是"有钱有闲"，更是"能把自己从某一个剧本里暂时抽出来"。这次曼谷，给了我一次演习。</div>
+
+      <div class="entry-section-label">【下午·来自实习生的一面镜子】</div>
+      <div class="entry-body">▸ 下午带的实习生崩溃了。没想到我这边的事，会在她身上投下那么深的影子——她比我还早一步先碎了。那一刻我有点愣，也有点心疼。她其实是个很聪明的姑娘，只是第一次近距离看到"一个不错的人也可能被这样对待"，对她来说，这个世界的某块地板突然就塌了。</div>
+      <div class="entry-body">▸ 我一边在想怎么安抚她，一边忽然意识到一件事——原来这件事放在很多人身上，可能真的会崩溃、会摆烂、会开始怀疑一切。而我，虽然也难过、也恍惚、也坐冷板凳，但这一个多月里，我居然一直是"还在走"的状态。没有全面瘫痪，没有躺平不管，汇报该做还在做、需求评审该过还在过、日记还在写、旅行还在安排。</div>
+      <div class="entry-body">▸ 以前我从来不觉得这叫"韧劲"——我以为人人都这样，咬咬牙就能扛过去。但这一刻被旁边的人替我提醒了：不是的。很多人遇到我这种处境，可能真的就垮掉了，或者索性直接摆烂。能"一边疼着一边还在走"的人，其实没那么多。</div>
+      <div class="entry-body">▸ 这是一种很奇妙的发现方式——不是自己照镜子看出来的，是借别人的反应看出来的。她碎的那一下，像一束突然打过来的光，照亮了我自己都没注意到的那块肌肉。</div>
+      <div class="entry-body">▸ 心疼她，但也谢谢她。她让我第一次认真地承认：我比自己以为的要结实得多。</div>
+
+      <div class="entry-section-label">【给自己的一句话】</div>
+      <div class="entry-quote">泰奶没那么甜了，没关系——你换了一个频道，是新的增益。<br>你以为人人都扛得住这些，其实不是——你只是太习惯自己"还在走"了。</div>
+    `
+  },
+  {
+    label: '5月18日',
+    content: `
+      <div class="entry-date">2026年5月18日 · 周日</div>
+      <div class="entry-title">每日记录</div>
+
+      <div class="entry-section-label">【今日心境】</div>
+      <div class="entry-body">周末去看了一部电影——《给阿嬷的情书》💌。走出影院到现在，心里一直软软的，像是被什么东西轻轻按了一下，凹进去的那个痕迹还没弹回来。</div>
+
+      <div class="entry-section-label">【今日记事】</div>
+      <div class="entry-body">▸ 看到南枝爸爸去世的那场戏，毫无征兆地流泪了。不是被剧情推着哭的，是某一个瞬间，眼泪自己就来了——身体比脑子先反应过来。阿嬷白发人送黑发人，一辈子牵挂的人先走了。那种戏不需要煽情，光是"顺序错了"这件事本身，就够重的。</div>
+      <div class="entry-body">▸ 哭完之后，脑子里只剩下一句话：原来人生就是一瞬。南枝爸爸的一生，在电影里被压缩成几场戏、几个回忆片段，然后没了。可那是一个完整的人——他也曾经是被阿嬷抱在怀里的小婴儿，也曾经年轻过、爱过、烦恼过、以为日子还很长。然后镜头一转，就没了。</div>
+      <div class="entry-body">▸ 那一刻流下来的眼泪，说不清是为南枝爸爸，为阿嬷，还是为自己心里某个人。也许都有。也许是突然意识到——自己也一样。现在纠结的那些事、工作的处境、副业要不要做、第一篇内容什么时候写——放在"人生就是一瞬"这个尺度下，会变得不一样。不是变得不重要了，而是变得更值得认真对待——因为时间真的不多。</div>
+
+      <div class="entry-section-label">【关于爷爷】</div>
+      <div class="entry-body">▸ 后来才承认——那场戏里流的泪，不是为南枝爸爸，是为爷爷。爷爷的离开也是"这么一瞬"。平时把这件事放得很深，日常不会碰到。但电影里那个画面，绕过了所有的防线，直接戳到了那个最里面的地方。身体记得的事，比脑子诚实。</div>
+
+      <div class="entry-section-label">【第二篇文章·点赞破 80】</div>
+      <div class="entry-body">▸ 把这段经历写成了自媒体第二篇文章——《给阿嬷的情书》观后感。阅读量没有第一篇高，但点赞超过了 80。阅读量是平台给的，点赞是读者自己给的。80 个人看完主动按下那一下，说明写的东西戳到了人。</div>
+      <div class="entry-body">▸ 回头看两篇文章，发现一个共同点：都是写自己。第一篇是把自己最脆弱的处境丢给 AI，AI 接住了我，我把"被接住"的经历写了出来；第二篇是爷爷的记忆毫无征兆地涌上来，我把这段真实的感受写了出来。两篇的内核都是同一个东西——一个真实的人，在真实地经历生活，然后诚实地写下来。</div>
+      <div class="entry-body">▸ 最好的内容，从来不是"我要写一篇什么选题"规划出来的，是先活了那一刻，然后它自己变成了内容。不是选题驱动，是生活驱动。</div>
+
+      <div class="entry-section-label">【给自己的一句话】</div>
+      <div class="entry-quote">原来人生就是一瞬。那这一瞬，你想拿来做什么？<br>你把自己最真实的痛，变成了能触碰别人的东西——这就是你做内容最对的方式。</div>
+    `
+  },
+  {
+    label: '慢慢想明白',
+    content: `
+      <div class="entry-date">INSIGHTS</div>
+      <div class="entry-title">慢慢想明白的事</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.8;margin-bottom:2rem;">这里收集那些不属于某一天、却是某一天突然长出来的想法。点击任意卡片展开阅读。</div>
+      <div class="insights-grid" id="insights-grid"></div>
+    `
+  }
+];
+
+const insights = [
+  {
+    meta: '5月18日 · 关于「一瞬」——人生的长度与密度',
+    quote: '"原来人生就是一瞬。那这一瞬，你想拿来做什么？"',
+    text: '看《给阿嬷的情书》，南枝爸爸去世的那场戏，毫无征兆地流泪了。不是被剧情推着，是身体自己先反应过来。\n\n后来才承认——那场戏里流的泪，不是为南枝爸爸，是为爷爷。爷爷的离开也是"这么一瞬"。平时把这件事放得很深，日常不会碰到。但电影里那个画面，绕过了所有的防线，直接戳到了最里面的地方。身体记得的事，比脑子诚实。\n\n他的一生被压缩成几场戏、几个回忆片段，然后没了。可那是一个完整的人——也曾经被阿嬷抱在怀里、也曾经年轻过、爱过、以为日子还很长。镜头一转，就没了。\n\n那一刻忽然意识到：自己也一样。现在纠结的工作、副业、冷板凳——放在"人生就是一瞬"这个尺度下，不是变得不重要了，而是变得更值得认真对待。因为时间真的不多。\n\n人活着的时候，总觉得日子是一天一天过的，很长、很慢、很有空。但从结局往回看，一切都快得像快进。所以也许问题从来不是"我还有多少时间"，而是"这一瞬，我想拿来做什么"。\n\n后来把这段经历写成了文章，80 个人按下了赞。原来把自己最真实的痛写下来，它就变成了能触碰别人的东西。最好的内容不是选题驱动的，是生活驱动的——先活了那一刻，然后它自己变成了内容。'
+  },
+  {
+    meta: '5月14日 · 关于「疙瘩」与「事已至此」',
+    quote: '"有些疙瘩，不需要解决，只需要承认它在。"',
+    text: `今天中午听说同事要去聚餐，没有我。
+
+第一反应是笑——「哈哈哈哈」。
+但 2 分钟后，我又跟自己说了一句真话：心里肯定难免有疙瘩的，但是事已至此，也没什么好惋惜的。
+
+这两件事我都说了，没有删掉前一句。这本身就是变化。
+
+—
+
+我以前以为成熟是「心里再也不会有疙瘩」——后来发现不是。
+
+成熟是「心里有疙瘩，但你不再为它惋惜了」。
+
+同事去聚餐没叫我，我心里「咯噔」了一下，这一下是真的。
+但同时——我能笑出来，这一笑也是真的。
+
+这两件事同时存在，不矛盾。
+
+以前我以为人是单线程的——要么难过，要么不难过；要么在乎，要么不在乎。
+现在才知道——一个走过事情的人，是多线程的。
+一边有疙瘩，一边能往前走。一边惋惜过，一边知道没什么好惋惜。
+
+—
+
+3 个月前刺一下 = 难过 3 天。
+今天刺一下 = 难过 30 秒。
+
+走出来不是「永远不再被刺到」——
+是「被刺到后能 30 秒之内回到平静」。
+
+不是疙瘩消失了。
+是疙瘩在那里，但它不再决定你今天怎么过。`
+  },
+  {
+    meta: '5月9日 · 关于「紧迫感」——它不是从外面来的，是你里面本来就装着的',
+    quote: '"外部世界没有变，是你对时间的感知变了。"',
+    text: `早上还在说"观察一年、给自己冷静期"——那是一个很松、很稳的状态。过了半小时看了一期访谈，开始觉得"6 个月窗口期，非常紧迫"。
+
+从"一年"到"6 个月"，外部世界没有变，是你对时间的感知变了。这种感知切换有个名字，叫 FOMO 被激活——Fear of Missing Out。很多内容的叙事结构本身就是一个精心设计的 FOMO 装置：先制造危机感，再展示"已经上岸的人"，最后给出行动指令。
+
+但今天的紧迫感，其实不是外部给的，是你本来就在一个"需要重新校准"的时间点上——工作上在冷板凳、财务上有深套的房子、人生上在 28 岁前后重新问自己要不要继续这样。这三种紧迫感叠加起来，你本来就已经很容易被"紧迫"两个字戳到。
+
+如果今天刷到的不是这一期访谈，是"楼市还会跌 30%"，你会觉得房子紧迫；如果是"移民窗口关闭"，你会觉得身份紧迫；如果是"35 岁职场断崖"，你会觉得年龄紧迫。问题不在"6 个月"这个数字上，问题在——你现在的状态特别容易"接招"。
+
+三条提醒，送给自己：
+
+一、区分"时代节奏"和"个人节奏"。时代可能真的在加速，但你的人生节奏不需要同步到时代。你是一个具体的人，有具体的工作、具体的房子、具体的关系。时代是背景，不是你的日程表。
+
+二、把抽象的紧迫感翻译成具体的小动作，它就不紧迫了。不用 6 个月改造人生——这周认真用一次新工具做一个真实的小任务、这个月列 3 件可以被外包的事、这三个月每周花 2 小时读一点内容。具体的东西不制造紧迫感，只有抽象的东西才制造紧迫感。
+
+三、永远不要在 FOMO 状态下做重大决定。清醒的你做的决定 > 激动的你做的决定。这条铁律比任何时代判断都可靠。早上那个"给自己一年冷静期"的决定，是更清醒的你做的；半小时后被一段内容推到高肾上腺素状态的你，不是更清醒，只是被临时点燃。
+
+一期内容值得听，但它是一剂药，不是一日三餐。听一次，震一下，记下里面有用的部分，然后回到自己的生活里。不要让别人定义你的时间表。`
+  },
+  {
+    meta: '5月8日 · 关于「精致利己主义」——免费的一堂识别课',
+    quote: '"她平时对你的周到不是关系，是投资。投资是有止损线的。"',
+    text: `粗糙的利己主义者你一眼就能看穿——吃相难看、势利写在脸上，反而不太伤人，因为你早早就不指望了。精致的那种才让人后知后觉：平时她对你是周到的、得体的、甚至看起来是真诚的——会记得你的喜好、会在合适的时机表达欣赏、会在团建时坐你旁边。所有动作都做得刚刚好，让你以为这是关系。
+
+直到出事那一刻你才明白——那不是关系，那是投资。投资是有止损线的。她不是变了，她只是触发了止损条件，按预设流程平仓离场。整个过程冷静、专业、不留首尾。从她的角度看，这甚至是一种"职业素养"。
+
+精致利己主义最让人不舒服的地方，不是"利己"——人都利己，这没什么。而是那个"精致"：她知道什么是对的，所以你没法用道理说服她，她比你更懂道理；她知道你会怎么想，所以她会精确地避开让你能抓到把柄的那个动作；她知道这样做不太地道，但她算过账，地道的代价比不地道高，于是选了不地道，再用"理性""边界感""成年人的自我保护"这些词把它包装好。
+
+她不是不懂温柔，她是算过温柔的成本。算完之后，决定不出。
+
+但说真的，看清这一点之后，反而是一种解脱。因为你以后不用再花力气去判断"她到底是真心还是表演了"——你已经有答案了。这种关系最累人的部分恰恰是那个"猜"，现在猜的环节省掉了。她在不在场，你的状态是稳的。
+
+这其实是她"免费"教给你的一课：怎么识别一种高配版本的虚情假意。这种鉴别能力以后会反复用得上——职场、合作、甚至感情里都会再遇到这种人。她用一次划线，把这个模板送给了你。
+
+28 岁认出这种人，比 38 岁才认出来便宜多了。`
+  },
+  {
+    meta: '5月7日 · 关于「划线」——学历最高的那个人走得最快',
+    quote: '"显形的不只是谁留下来，还有谁走得最漂亮。"',
+    text: `出事之后同事里态度变化最大的，是学历最高的那一个。非常明显的划清界限和不想接触。一开始觉得意外，后来想想，其实有它的道理。
+
+学历高这件事，给了一个人两样东西：一个是分析能力，一个是对"声誉/归队"的高敏感度。出事的时候，第二样会压过第一样。他不是没看见你，也不是不知道你没做错什么——他太清楚了，所以才要更果断地划开。因为他心里其实在算一道题："站在你这边的边际收益 vs. 被关联的边际风险"。算完之后，他选了对自己最优的那个解。
+
+学历低一点、情商朴素一点的人，很多反应反而是"我管他怎么了我先问问"——那是人的本能。学历高的人，本能被训练过了，他们的第一反应不是"这个人怎么了"，而是"这件事意味着什么、我应该怎么表现"。分析先于感受，立场先于关系。
+
+这不是贬低他——这是一种职业化的生存策略，在大多数时候都对他很管用。只是碰上这种时刻，它会把一个人变得格外冷。
+
+普通人划线都划得含糊一点，会有迟疑、会有尴尬表情、会假装没看见。他这种人划线划得干净、专业、无懈可击——没有破绽，也没有温度。干净到让你觉得好笑。
+
+而"好笑"这个反应本身，说明你已经走出来一截了。如果是一个月前，这件事可能会刺你一下；现在你能把它当段子看，说明那层壳已经在外面了，他的冷再也碰不到你里面。
+
+显形的不只是"谁留下来"，还有"谁走得最漂亮"。而走得最漂亮的那个，往往是你以前最高估的那个。`
+  },
+  {
+    meta: '4月28日 · 关于「渡过」与「解决」',
+    quote: '"不管结果怎么样，你已经在往前走了。"',
+    text: '人在遇到事情的时候，总想马上找到答案、马上解决。但很多事情其实是悬而未决的，是靠一些话、一些日常、一些温柔慢慢渡过的。\n\n解决是动词，渡过是状态。\n解决需要答案，渡过只需要时间和一些温柔的话——像扶着河边的栏杆慢慢走过桥。没有战胜，只是每天都继续生活。然后有一天回头一看，桥已经在身后了。'
+  },
+  {
+    meta: '4月28日 · 关于「战胜」与「共存」',
+    quote: '"你没有战胜那件事，你只是每天都继续生活。"',
+    text: '「战胜」这个词本身就有问题——它假设了你和那件事是对立的，必须把它打倒、踩在脚下、才算过关。\n\n但那件事也是你的一部分。它发生在你的人生里，构成了你的一段时间。你没法战胜它，就像你没法战胜自己的影子。\n\n能做的只是——让它变小一点。不是消失，是比例变小。\n\n一个月前，它可能占据你生活的 90%。今天，它只是你偷偷看一眼内审文档的那 10 秒钟。剩下的时间，你在和 Nick 讨论泰国、在准备评审、在记录这份文档。\n\n它没有变小——是你的生活长大了。'
+  },
+  {
+    meta: '4月28日 · 关于「出局」与「棋子」',
+    quote: '"棋子被出局，是因为棋局结束了，或者换了一盘棋。可是你的人生不是一盘棋。"',
+    text: '老板撤回的那条消息，比完全沉默更伤人。他想说点什么，但最后选择了不说——这本身就是一种信息。\n\n冷板凳的滋味，不只是被遗忘，更是眼睁睁看着自己在这艘船上变得可有可无。不是位置上的出局，是存在感的出局。\n\n但棋局可以结束，你还在。你还在和 Nick 讨论五一去哪里玩，你还在记录这份文档，你还在往前走。出局的是那个角色，不是你这个人。'
+  },
+  {
+    meta: '4月29日 · 关于「隐藏彩蛋」',
+    quote: '"很多事情就是应该什么样子，就是什么样子的。"',
+    text: '以前总相信，如果自己多看一眼、多刷一次、多坚持一下，生活会突然给你一个 surprise——突然降价的机票、突然出现的缺口、突然改变主意的人。\n\n但大多数时候，现实没有彩蛋。事情本来该怎样，就会怎样。临时起意的行程到不了富国岛，冷掉的工作关系不会突然回温，老板撤回的那条消息也不会再发出来。\n\n这不是悲观——是把那些多余的期待收起来。收起来之后，人反而轻一点。不再盯着那个可能永远不会打开的门，才能看见眼前已经打开的路。\n\n第 N 次落地曼谷，也挺好的。'
+  },
+  {
+    meta: '4月29日 · 关于「重复」与「变化」',
+    quote: '"重复的是城市，不是你。"',
+    text: '你每次去曼谷，总觉得在重复。但重复的是城市，不是你。\n\n第一次落地的你，可能是紧张的、兴奋的；\n第三次的你，是熟门熟路的；\n而这一次的你，是扛过一个"恍如隔世的月份"、还在练习如何坐冷板凳、还在学会不指望"隐藏彩蛋"的你。\n\n城市是同一个曼谷，但你每次带去的"自己"都是新的。\n\n这不是重复——是你用同一个坐标系，在记录自己的变化。'
+  },
+  {
+    meta: '4月29日 · 关于「闹中取静」',
+    quote: '"坐冷板凳的另一面，是忽然无人问津的自由。"',
+    text: '以前每次放假都要纠结——多休几天还是按时回来？因为总会赶上业务汇报，谁都盯着你。\n\n这次五一仍然有汇报。但因为开始坐冷板凳，大家都在忙，而你忙中偷闲，甚至可以多休几天，不会有人发现。\n\n这是一种很神奇的错位感——同一件事（被冷落），同时带来了两种完全相反的情绪。一面是失落，一面是自由。大隐隐于市的恍惚。\n\n人生里很多事大概都是这样：没有纯粹的坏事，也没有纯粹的好事。只是你站在哪个角度看它。'
+  },
+  {
+    meta: '4月29日 · 关于「温柔，和真正的人」',
+    quote: '"我的每一次失控和想哭，都不是因为挫折本身，而是因为朋友的温柔。"',
+    text: '过得好的时候，身边有非常多的人——带着各种各样的目的来接近你。而遭遇挫折的时候你才发现，真正关心你、愿意帮助你的人不多。但正因为不多，才格外珍贵。\n\n出事以后，真正让自己崩溃想哭的，不是挫折本身，而是朋友一句真诚的"你还好吗"、一个什么都没说只是"我在"的陪伴、一条在沉默里默默发来的消息。\n\n人面对"伤害"其实是很硬的，你会本能地竖起壳。但温柔会把壳融化。\n你哭，不是变弱了——是那一刻，你终于不用撑了。\n\n这段日子最大的馈赠不是教训，是筛子。\n台上的时候，身边围满了人；跌下来这一下，筛子自己就替你筛完了。\n\n剩下来的那几个人——以后要把更多的时间、更多的真诚、更多的惦念，都给他们。\n这是最值得的资产重配。'
+  },
+  {
+    meta: '4月29日 · 关于「岸上」——一份待验证清单',
+    quote: '"跌下来的不是你，是那束借来的光。岸上会有台上永远看不见的东西。"',
+    text: '台上的时候，你看不清自己。\n跌下来之后，安静了——你才开始看见一些本来看不见的东西。\n\n这里列一份待验证的清单，边走边对照：\n\n1. 真正的人会显形\n灯灭了人散了，留下的才是你的。\n\n2. 不以"有用"衡量自己\n没人等你交东西的时候，才第一次认识自己。\n\n3. 时间被还给你了\n不再是被切碎的会议和 deadline，一天重新变成一整块。\n\n4. 看见自己的边界\n什么可以放，什么不能丢。这不是成长出来的，是跌出来的。\n\n5. "结束"不是结束\n人生不是一本书，是一个书架。合上一本，还有很多没翻开。\n\n——以上是此刻的假设，留着边走边验证。\n有新的，再补上。'
+  },
+  {
+    meta: '5月7日 · 关于「简单的快乐」',
+    quote: '"泰奶没那么甜了，不是它变淡了，是你暂时接收不到那么细的糖。"',
+    text: '以前觉得快乐是件很简单的事——一杯泰奶、一场 massage、一盘炒河粉，随手就能拿到。这次到曼谷，这些东西都还在原来的位置，但它们点不亮我了。\n\n一开始有点失落：是不是我变了？是不是从此以后，再也回不到那个"一杯奶茶就能开心一下午"的自己了？\n\n后来想明白：不是快乐变淡了，是人心里有别的东西在占着位置。那些事像一层很薄的雾，不挡视线，但挡糖分。等雾散了，糖还是那个糖。\n\n允许自己有一段"简单快乐失灵"的时间。这不是病，是正在渡的河。'
+  },
+  {
+    meta: '5月7日 · 关于「换环境」与「放空」',
+    quote: '"放空不是靠意志力，是靠把自己放进一个需要重新适应的环境里。"',
+    text: '以前总以为"想开点"是一件内部的事——靠深呼吸、靠冥想、靠自我对话。但这次曼谷发现：真正让工作上的事暂时从脑子里退场的，不是"努力不想"，而是陌生的语言、嘈杂的街道、摩托车的声音、听不懂的菜单。\n\n陌生的感官占据了大部分带宽，于是那些反复咀嚼的焦虑，就没有位置了。不是忘了，是暂时顾不上想。而"顾不上"，比"努力不想"管用一百倍。\n\n所以下次心里塞得慌的时候，不用跟自己较劲——换个环境就好。哪怕只是走到一条不熟的街上，去一家没去过的店。让身体的"新信息"先挤出一点空间，脑子自然会轻一些。'
+  },
+  {
+    meta: '5月7日 · 关于「置身事外」',
+    quote: '"短暂地从自己那部剧里走出来，你才想起自己也是观众。"',
+    text: '走在曼谷某条街上，有几个瞬间忽然有种恍惚——像是从自己那部正在上演的电视剧里短暂地走出来，站在了观众席上。冷板凳、内审、撤回的消息，都暂时变成了"别人剧里的情节"。\n\n那种距离感非常珍贵。它不是让事情消失，而是让你想起——你不只是那个身处其中、被剧情拉扯的角色，你也是坐在外面的观众。角色会疼，观众不会。同一个你，可以在两个座位之间切换。\n\n自由不只是"有钱有闲"，更是"能把自己从某一个剧本里暂时抽出来"。这次曼谷，给了我一次演习。以后心被剧情拉得太紧的时候，要记得——票根还在你手里，可以起身出去站一会儿。'
+  },
+  {
+    meta: '5月7日 · 关于「韧劲」——借别人的眼睛看见自己',
+    quote: '"你以为人人都扛得住，其实不是——你只是太习惯自己\'还在走\'了。"',
+    text: '带的实习生今天崩溃了。她比我还先碎了一步。那一刻我忽然意识到——原来这件事放在很多人身上，可能真的会崩溃、会摆烂、会开始怀疑一切。\n\n我自己从来没觉得"还在走"是一件需要夸的事。该汇报的汇报、该写的日记写、该订的机票订——我以为人人都这样。但旁边这个姑娘碎的那一下，像一束突然打过来的光，照亮了我自己一直没注意到的那块肌肉。\n\n韧劲最吊诡的地方在于：你自己是看不见它的。因为对你来说，它是默认值。只有当你看见别人在同样的处境下做不到的时候，你才第一次意识到——哦，原来这是一种能力，不是一种"本来就该有的"。\n\n自我认识经常需要借一面镜子。这面镜子可能是一个朋友、一个对手、一个比你还难的人。他们照出来的不是他们——是你自己身上那些你从来没看清的东西。\n\n所以这段日子也不全是损失。至少它让我用一种"免费的代价"确认了一件事：我比自己以为的要结实。这件事一旦知道，就再也拿不走了。'
+  },
+  {
+    meta: '5月7日 · 关于「交托」——去比自己更大的东西面前',
+    quote: '"拜神不是迷信，是允许自己\'不用全部自己扛\'的几分钟。"',
+    text: '在曼谷去拜了四面神。过去路过很多次，都只是远远看一眼、觉得热闹。这次是真的站到了四个面前，一个一个拜过去——事业、姻缘、财富、健康。\n\n说不出在求什么，甚至不确定自己相不相信。但那几分钟，是过去一个多月里，我第一次允许自己"不用全部自己扛"的时刻。平时都在硬撑、都在"我来兜"、都在做那个靠谱的、懂事的、不会崩的人。只有在香烛面前，才有一个"合理的借口"把这口气松一下。\n\n后来我想明白：拜神不是迷信。是人在最不确定的时候，需要一个"比自己更大的东西"来暂时承接自己。不是它真的会帮你，是你在那个姿势里，第一次允许自己不万能、允许自己有求。\n\n盔甲穿久了，人自己都忘了原来是可以脱下来的。那四炷香的时间，就是一次短暂的卸甲。站起来之后，盔甲再穿回去——但身体已经记住了"可以脱"这件事。\n\n这大概也是所有仪式的意义。不是换来什么，是给自己留一个缝隙，让那些平时不许自己说出口的软、不许自己承认的怕、不许自己请求的帮助，有一个可以安放的地方。'
+  },
+  {
+    meta: '5月7日 · 关于「有求必应」——应的不是愿望',
+    quote: '"\'有求必应\'应的不是愿望，是\'你终于敢开口\'这件事。"',
+    text: '那天在四面神前，旁边一位女士在默念想赚一个亿、承诺给神很多钱还愿。被她的气场带得我都忘了自己的流程，第二天又去补了一次。\n\n后来想——神大概率不会给她一个亿。但她站在那儿的几分钟，她其实是在允许自己承认："我就是想要一个亿，我不装了，我不说我只想岁月静好。"这个"允许自己承认"的动作，本身就已经有价值了。\n\n很多人一辈子不敢对自己说出真实的贪欲、真实的怕、真实的软。在神面前，他们才第一次把那些话摆出来。神接不接另说——他们自己先看见了自己。\n\n所以真正"应验"的是哪部分？大概是："你终于敢开口"之后，你看自己的眼神不一样了。敢求钱的人，往后看钱不再装清高；敢求感情的人，对这段关系会更用心；敢求健康的人，回去可能就愿意多睡半小时了。\n\n愿望本身可能不灵，但"敢许愿"这个动作，会反过来改变许愿的人。'
+  },
+  {
+    meta: '5月7日 · 关于「尽人事听天命」——一个改写版',
+    quote: '"做我能做的，不做我不能做的，剩下的交给时间。"',
+    text: '"尽人事听天命"这句话我不是完全认同——因为它假设了"人事"和"天命"是两件分得清的事。但在我现在的处境里，它们是搅在一起的。\n\n更麻烦的是：这次遇到的事，很多部分根本不是"尽人事"能解决的。老板撤回的消息、内审的结果、坐冷板凳这件事——我再努力，那些也不在我的手里。"人事"那一栏，其实已经没什么可尽的了。\n\n这种时候拜神反而成了一种特别的"人事"——不是为了结果，是为了让自己还有点事可做。一个人如果什么都不能做只能等，是会疯的。拜神、补还愿、再去一次——这些都在帮我保留"我还在参与这件事"的感觉。哪怕参与的方式，是通过一个我自己都不完全信的仪式。\n\n所以比"尽人事听天命"更贴我现在的版本是：做我能做的，不做我不能做的，剩下的交给时间。\n\n时间比"天命"更具体，也更温柔一点。它不保证结果，但它保证——你走着走着，会走到一个和现在不一样的地方。'
+  }
+];
+
+// ===== BOOK LOGIC =====
+let currentPage = 0;
+const book = document.getElementById('book');
+const dotsEl = document.getElementById('progress-dots');
+const labelEl = document.getElementById('page-label');
+const navHint = document.getElementById('nav-hint');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+function buildDots() {
+  dotsEl.innerHTML = '';
+  pages.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'pdot';
+    if (i === 0) d.classList.add('active');
+    else if (i < currentPage) d.classList.add('done');
+    dotsEl.appendChild(d);
+  });
+}
+
+function renderPage(idx, dir) {
+  const existing = book.querySelector('.page');
+  if (existing) existing.remove();
+
+  const p = document.createElement('div');
+  p.className = 'page page-enter';
+  p.innerHTML = `<div class="page-inner">${pages[idx].content}</div>`;
+  book.appendChild(p);
+
+  // Build insight cards if this is the insights page
+  if (pages[idx].label === '慢慢想明白') {
+    setTimeout(buildInsightsPage, 50);
+  }
+
+  labelEl.textContent = pages[idx].label;
+  buildDots();
+  prevBtn.disabled = idx === 0;
+  nextBtn.disabled = idx === pages.length - 1;
+  currentPage = idx;
+}
+
+function enterBook() {
+  document.getElementById('cover').classList.add('fade-out');
+  document.getElementById('topbar').classList.add('visible');
+  navHint.classList.add('visible');
+  setTimeout(() => {
+    document.getElementById('cover').style.display = 'none';
+    renderPage(1);
+  }, 1500);
+}
+
+function goPage(n) {
+  if (n < 0 || n >= pages.length) return;
+  const existing = book.querySelector('.page');
+  if (existing) existing.classList.add('page-exit');
+  setTimeout(() => renderPage(n), 300);
+}
+
+function prevPage() { goPage(currentPage - 1); }
+function nextPage() { goPage(currentPage + 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextPage(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevPage(); }
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 60) { if (dx > 0) nextPage(); else prevPage(); }
+});
+
+// ===== CARDS =====
+function buildCards() {
+  const wall = document.getElementById('cards-wall');
+  wall.innerHTML = '';
+  insights.forEach((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'fcard';
+    card.innerHTML = `<div class="fcard-meta">${c.meta}</div><div class="fcard-quote">${c.quote}</div><div class="fcard-ref">${c.text.substring(0, 60)}...</div>`;
+    card.onclick = () => openCard(i);
+    wall.appendChild(card);
+  });
+}
+
+function openCards() {
+  buildCards();
+  document.getElementById('cards-overlay').classList.add('open');
+}
+function closeCards() { document.getElementById('cards-overlay').classList.remove('open'); }
+let currentCardIdx = 0;
+function openCard(i) {
+  currentCardIdx = i;
+  const c = insights[i];
+  document.getElementById('card-modal-quote').textContent = c.quote;
+  document.getElementById('card-modal-text').textContent = c.text;
+  document.getElementById('card-modal').classList.add('open');
+}
+function closeCardModal() { document.getElementById('card-modal').classList.remove('open'); }
+function shareCurrentCard() {
+  const c = insights[currentCardIdx];
+  openShare(c.quote, c.text.substring(0, 200) + (c.text.length > 200 ? '...' : ''), c.meta);
+}
+
+// ===== INSIGHTS PAGE (慢慢想明白) - 独立卡片 + 详情弹窗 =====
+let currentInsightIdx = 0;
+let insightsSorted = []; // 按日期倒序的视图副本——原始 insights 数组不动
+
+// 从 meta 里提取日期 "5月9日 · ..." → 数字 509，用于排序
+function parseInsightDate(meta) {
+  const m = meta.match(/(\d+)月(\d+)日/);
+  if (!m) return 0;
+  return parseInt(m[1]) * 100 + parseInt(m[2]);
+}
+
+function buildInsightsPage() {
+  const grid = document.getElementById('insights-grid');
+  if (!grid) return;
+  
+  // 每次渲染时重新排序——保证新增的 insight 自动归位
+  insightsSorted = [...insights].sort((a, b) => parseInsightDate(b.meta) - parseInsightDate(a.meta));
+  
+  grid.innerHTML = '';
+  
+  insightsSorted.forEach((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'insight-card';
+    card.innerHTML = `
+      <div class="insight-meta">${c.meta}</div>
+      <div class="insight-quote">${c.quote}</div>
+    `;
+    card.onclick = () => openInsight(i);
+    grid.appendChild(card);
+  });
+}
+
+function openInsight(i) {
+  currentInsightIdx = i;
+  const c = insightsSorted[i];
+  document.getElementById('insight-modal-meta').textContent = c.meta;
+  document.getElementById('insight-modal-quote').textContent = c.quote;
+  document.getElementById('insight-modal-text').textContent = c.text;
+  document.getElementById('insight-counter').textContent = `${i + 1} / ${insightsSorted.length}`;
+  document.getElementById('insight-prev').disabled = (i === 0);
+  document.getElementById('insight-next').disabled = (i === insightsSorted.length - 1);
+  document.getElementById('insight-modal').classList.add('open');
+}
+
+function closeInsightModal() {
+  document.getElementById('insight-modal').classList.remove('open');
+}
+
+function navigateInsight(dir) {
+  const next = currentInsightIdx + dir;
+  if (next >= 0 && next < insightsSorted.length) {
+    openInsight(next);
+  }
+}
+
+// ===== SEARCH =====
+const allText = pages.map(p => p.content.replace(/<[^>]+>/g, '')).join('\n');
+
+function doSearch(q) {
+  const res = document.getElementById('search-results');
+  if (!q.trim()) { res.innerHTML = ''; return; }
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(escaped, 'gi');
+  const matches = [...allText.matchAll(new RegExp(escaped, 'gi'))];
+  let html = '';
+  if (matches.length === 0) {
+    html = '<div style="color:var(--text-muted);text-align:center;padding:1rem;">没有找到相关内容</div>';
+  } else {
+    const idx = matches[0].index;
+    const start = Math.max(0, idx - 40);
+    const end = Math.min(allText.length, idx + 100);
+    let snippet = allText.substring(start, end).replace(re, m => `<mark>${m}</mark>`);
+    if (start > 0) snippet = '...' + snippet;
+    if (end < allText.length) snippet = snippet + '...';
+    html = `<div class="sr-item">${snippet}</div>`;
+  }
+  res.innerHTML = html;
+}
+
+function openSearch() { document.getElementById('search-overlay').classList.add('open'); document.getElementById('search-input').focus(); }
+function closeSearch() { document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value = ''; document.getElementById('search-results').innerHTML = ''; }
+document.getElementById('search-input').addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+
+// ===== WRITE PANEL =====
+let writeCategory = 'auto';
+
+function openWrite() {
+  document.getElementById('write-overlay').classList.add('open');
+  document.getElementById('write-input').focus();
+  document.getElementById('write-result').classList.remove('show');
+}
+function closeWrite() {
+  document.getElementById('write-overlay').classList.remove('open');
+}
+
+function setCategory(cat) {
+  writeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cat-' + cat).classList.add('active');
+}
+
+function classifyContent(text) {
+  // AI 分类逻辑：根据内容特征判断属于哪个模块
+  const insightKeywords = ['想明白', '道理', '原来', '后来发现', '领悟', '醒悟', '意识到', '规律', '本质', '真相', '所以说', '这就是', '关于「', '一个人如果', '长大的一部分'];
+  const dailyKeywords = ['今天', '昨天', '刚才', '上午', '下午', '晚上', '周末', '早上', '中午', '去了', '看了', '吃了', '聊了', '做了', '发生了', '心情', '心境', '感觉'];
+  
+  let insightScore = 0;
+  let dailyScore = 0;
+  
+  insightKeywords.forEach(kw => { if (text.includes(kw)) insightScore++; });
+  dailyKeywords.forEach(kw => { if (text.includes(kw)) dailyScore++; });
+  
+  // 如果内容比较长（超过200字）且有明显的总结性语句，偏向 insight
+  if (text.length > 200 && (text.includes('所以') || text.includes('原来') || text.includes('后来想'))) insightScore += 2;
+  
+  // 如果有具体的时间描述和事件，偏向 daily
+  if (/\d+[点时]/.test(text) || /今天|昨天|刚才/.test(text)) dailyScore += 2;
+  
+  // 如果内容是一个感悟/道理的表达（偏抽象），偏向 insight
+  if (text.length < 300 && !/(去了|看了|吃了|做了|发生)/.test(text) && /(是|就是|其实|原来|大概)/.test(text)) insightScore += 1;
+  
+  return insightScore > dailyScore ? 'insight' : 'daily';
+}
+
+function getTodayStr() {
+  const now = new Date();
+  const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
+  return `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 · 周${weekDays[now.getDay()]}`;
+}
+
+function getShortDate() {
+  const now = new Date();
+  return `${now.getMonth()+1}月${now.getDate()}日`;
+}
+
+function formatAsDaily(text) {
+  const lines = text.split('\n').filter(l => l.trim());
+  let body = '';
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed) {
+      body += `<div class="entry-body">▸ ${trimmed}</div>\n`;
+    }
+  });
+  return {
+    pageContent: `
+      <div class="entry-date">${getTodayStr()}</div>
+      <div class="entry-title">每日记录</div>
+      <div class="entry-section-label">【今日记事】</div>
+      ${body}
+      <div class="entry-section-label">【原文】</div>
+      <div class="entry-body" style="font-style:italic;color:var(--text-muted);">${text}</div>
+    `,
+    label: getShortDate()
+  };
+}
+
+function extractQuote(text) {
+  // 尝试提取一句核心金句（短句、有引号的句子优先）
+  const sentences = text.split(/[。\n]/).filter(s => s.trim().length > 4 && s.trim().length < 50);
+  if (sentences.length === 0) {
+    return '"' + text.substring(0, 40) + '..."';
+  }
+  // 优先选有引号的
+  const quoted = sentences.find(s => s.includes('"') || s.includes('"') || s.includes('「'));
+  if (quoted) return '"' + quoted.trim().replace(/["""]/g, '') + '"';
+  // 选最短的有意义的句子
+  sentences.sort((a, b) => a.length - b.length);
+  return '"' + sentences[0].trim() + '"';
+}
+
+function generateInsightTitle(text) {
+  // 尝试从内容中提取一个简短的主题标签
+  const patterns = [
+    /关于[「"「](.+?)[」"」]/,
+    /原来(.{4,15})/,
+    /(.{4,12})这件事/,
+  ];
+  for (const p of patterns) {
+    const m = text.match(p);
+    if (m) return `关于「${m[1].substring(0,10)}」`;
+  }
+  // fallback: 取前10个字
+  return text.substring(0, 12).replace(/[，。、\n]/g, '') + '...';
+}
+
+function formatAsInsight(text) {
+  const quote = extractQuote(text);
+  const title = generateInsightTitle(text);
+  const meta = `${getShortDate()} · ${title}`;
+  return {
+    insightData: { meta, quote, text },
+    meta, quote
+  };
+}
+
+function submitWrite() {
+  const input = document.getElementById('write-input');
+  const text = input.value.trim();
+  if (!text) return;
+  
+  let category = writeCategory;
+  if (category === 'auto') {
+    category = classifyContent(text);
+  }
+  
+  const resultEl = document.getElementById('write-result');
+  const resultContent = document.getElementById('write-result-content');
+  
+  if (category === 'daily') {
+    const { pageContent, label } = formatAsDaily(text);
+    // 在"慢慢想明白"页面前插入新的每日记录页
+    const insightIdx = pages.findIndex(p => p.label === '慢慢想明白');
+    const newPage = { label, content: pageContent };
+    if (insightIdx > -1) {
+      pages.splice(insightIdx, 0, newPage);
+    } else {
+      pages.push(newPage);
+    }
+    buildDots();
+    resultContent.textContent = `✅ 已添加到「每日记录」→ ${label}\n\n分类依据：内容包含具体事件/时间描述\n\n你可以翻到对应页面查看。`;
+    resultEl.classList.add('show');
+  } else {
+    const { insightData, meta, quote } = formatAsInsight(text);
+    insights.unshift(insightData);
+    resultContent.textContent = `✅ 已添加到「慢慢想明白的事」\n\n标题：${meta}\n金句：${quote}\n\n分类依据：内容偏向感悟/道理的表达\n\n你可以在 ✦ 卡片墙中查看。`;
+    resultEl.classList.add('show');
+    // 如果当前在 insights 页面，重新渲染
+    if (pages[currentPage] && pages[currentPage].label === '慢慢想明白') {
+      setTimeout(buildInsightsPage, 100);
+    }
+  }
+  
+  // 保存到 localStorage
+  saveToLocal(category, text);
+}
+
+function saveToLocal(category, text) {
+  const stored = JSON.parse(localStorage.getItem('odyssey_entries') || '[]');
+  stored.push({
+    category,
+    text,
+    date: new Date().toISOString(),
+    dateStr: getTodayStr()
+  });
+  localStorage.setItem('odyssey_entries', JSON.stringify(stored));
+}
+
+// 页面加载时恢复 localStorage 中的条目
+function restoreLocalEntries() {
+  const stored = JSON.parse(localStorage.getItem('odyssey_entries') || '[]');
+  stored.forEach(entry => {
+    if (entry.category === 'daily') {
+      const { pageContent, label } = formatAsDaily(entry.text);
+      const insightIdx = pages.findIndex(p => p.label === '慢慢想明白');
+      const newPage = { label: entry.dateStr ? entry.dateStr.split(' ')[0].replace(/\d+年/, '') : label, content: pageContent };
+      if (insightIdx > -1) pages.splice(insightIdx, 0, newPage);
+      else pages.push(newPage);
+    } else {
+      const { insightData } = formatAsInsight(entry.text);
+      insights.unshift(insightData);
+    }
+  });
+  if (stored.length > 0) buildDots();
+}
+restoreLocalEntries();
+
+// ===== SHARE CARD =====
+function openShare(quote, body, date) {
+  document.getElementById('share-card-quote').textContent = quote || '';
+  document.getElementById('share-card-body').textContent = body || '';
+  document.getElementById('share-card-date').textContent = date || getTodayStr();
+  document.getElementById('share-overlay').classList.add('open');
+  document.getElementById('share-tip').classList.remove('show');
+}
+
+function closeShare() {
+  document.getElementById('share-overlay').classList.remove('open');
+}
+
+function saveShareImage() {
+  const card = document.getElementById('share-card-render');
+  html2canvas(card, {
+    scale: 3,
+    backgroundColor: '#0f1923',
+    useCORS: true
+  }).then(canvas => {
+    // 移动端：显示图片供长按保存
+    const img = canvas.toDataURL('image/png');
+    const overlay = document.getElementById('share-overlay');
+    const preview = overlay.querySelector('.share-card-preview');
+    preview.innerHTML = `<img src="${img}" style="width:100%;border-radius:16px;display:block;">`;
+    document.getElementById('share-tip').classList.add('show');
+  });
+}
+
+// 点击内容触发分享
+document.addEventListener('click', function(e) {
+  const target = e.target;
+  
+  // 长按检测（移动端）或双击检测
+  if (target.classList.contains('entry-quote')) {
+    openShare(target.textContent.trim(), '', '');
+  }
+});
+
+// 双击触发分享（桌面端）
+document.addEventListener('dblclick', function(e) {
+  const target = e.target;
+  if (target.classList.contains('entry-quote') || target.classList.contains('entry-body')) {
+    const text = target.textContent.trim();
+    if (text.length > 10) {
+      openShare(text.length < 80 ? text : '', text.length >= 80 ? text : '', '');
+    }
+  }
+});
+
+// 为 insight 卡片添加分享按钮
+function openInsightShare(idx) {
+  const c = insightsSorted[idx];
+  openShare(c.quote, c.text.substring(0, 200) + (c.text.length > 200 ? '...' : ''), c.meta);
+}
+
+// 覆盖 insight modal，添加分享按钮
+const origOpenInsight = openInsight;
+openInsight = function(i) {
+  origOpenInsight(i);
+  // 在 modal nav 区域插入分享按钮（如果不存在）
+  const nav = document.querySelector('.insight-modal-nav');
+  if (nav && !document.getElementById('insight-share-btn')) {
+    const btn = document.createElement('button');
+    btn.id = 'insight-share-btn';
+    btn.className = 'insight-nav-btn';
+    btn.textContent = '📷 分享';
+    btn.onclick = () => openInsightShare(currentInsightIdx);
+    nav.appendChild(btn);
+  }
+};
+
+// Keyboard shortcut
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('share-overlay').classList.contains('open')) closeShare();
+    if (document.getElementById('write-overlay').classList.contains('open')) closeWrite();
+  }
+});
+</script>
 </body>
 </html>
