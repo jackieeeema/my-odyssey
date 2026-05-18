@@ -1961,11 +1961,30 @@ function saveShareImage() {
     backgroundColor: '#0f1923',
     useCORS: true
   }).then(canvas => {
-    // 移动端：显示图片供长按保存
     const img = canvas.toDataURL('image/png');
+    // 方案1：尝试直接下载
+    const link = document.createElement('a');
+    link.download = '奥德赛分享卡片.png';
+    link.href = img;
+    
+    // 方案2：同时显示图片供长按保存（移动端备用）
     const overlay = document.getElementById('share-overlay');
     const preview = overlay.querySelector('.share-card-preview');
-    preview.innerHTML = `<img src="${img}" style="width:100%;border-radius:16px;display:block;">`;
+    preview.innerHTML = `
+      <div style="text-align:center;padding:1rem;">
+        <img src="${img}" style="width:100%;border-radius:12px;display:block;margin-bottom:1rem;">
+        <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;">
+          👆 长按图片保存到相册<br>
+          或点击下方按钮下载
+        </div>
+      </div>
+    `;
+    
+    // 触发下载
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     document.getElementById('share-tip').classList.add('show');
   });
 }
