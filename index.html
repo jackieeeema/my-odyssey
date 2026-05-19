@@ -900,6 +900,336 @@ body {
 }
 .gate-error.show { opacity: 1; }
 
+/* ==================== MEDIA TRACKER ==================== */
+.media-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.media-tab {
+  font-size: 0.78rem;
+  padding: 0.5em 1.2em;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+.media-tab.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(107,140,206,0.08);
+}
+.media-tab:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-secondary); }
+
+.media-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.media-stat {
+  background: rgba(10,13,20,0.5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+}
+.media-stat-num {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+.media-stat-label {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  letter-spacing: 0.1em;
+}
+
+.media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.media-item {
+  background: rgba(10,13,20,0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  transition: var(--transition);
+}
+.media-item:hover { border-color: rgba(107,140,206,0.3); }
+.media-item.dim { opacity: 0.55; }
+.media-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.media-item-tag {
+  font-size: 0.68rem;
+  color: var(--accent);
+  background: rgba(107,140,206,0.1);
+  padding: 0.2em 0.7em;
+  border-radius: 10px;
+  letter-spacing: 0.06em;
+}
+.media-item-date {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.media-item-title {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.media-item-data {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.media-rate {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+.media-rate.good {
+  color: #81c784;
+}
+.media-item-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.media-insight-box {
+  background: rgba(107,140,206,0.05);
+  border: 1px solid rgba(107,140,206,0.15);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+.media-insight-title {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+.media-insight-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.media-chart-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+.media-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.compare-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.compare-platform {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  width: 3.5rem;
+  flex-shrink: 0;
+}
+.compare-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.compare-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+.compare-bar.dy { background: linear-gradient(90deg, #6b8cce, #8ba4d8); }
+.compare-bar.xhs { background: linear-gradient(90deg, #e57373, #ef9a9a); }
+.compare-val {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.media-conclusion {
+  background: rgba(10,13,20,0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+.conclusion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 0.4rem;
+}
+.conclusion-item:last-child { margin-bottom: 0; }
+.conclusion-num {
+  font-size: 0.65rem;
+  color: var(--accent);
+  background: rgba(107,140,206,0.1);
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 640px) {
+  .media-summary { grid-template-columns: repeat(2, 1fr); }
+  .media-stat-num { font-size: 1.1rem; }
+  .compare-val { font-size: 0.62rem; }
+}
+
+/* ===== IDEAS / CANDIDATE DIRECTIONS ===== */
+.ideas-date {
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+.ideas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.ideas-item {
+  background: rgba(10,13,20,0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  transition: var(--transition);
+}
+.ideas-item:hover { border-color: rgba(107,140,206,0.3); }
+.ideas-item-left {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+.ideas-rank {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.ideas-item-info { flex: 1; }
+.ideas-item-title {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
+}
+.ideas-item-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.ideas-item-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.ideas-stat {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  background: rgba(107,140,206,0.06);
+  padding: 0.2em 0.6em;
+  border-radius: 8px;
+}
+
+.ideas-trending {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.trending-platform {
+  background: rgba(10,13,20,0.35);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+}
+.trending-platform-name {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.trending-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.trending-topic {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+.trending-topic-tag {
+  font-size: 0.6rem;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  background: rgba(255,87,34,0.15);
+  color: #ff7043;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.trending-topic-name {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+.trending-topic-heat {
+  font-size: 0.6rem;
+  flex-shrink: 0;
+}
+.trending-topic-link {
+  font-size: 0.65rem;
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 0.7;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.trending-topic-link:hover { opacity: 1; }
+
+@media (max-width: 640px) {
+  .trending-topic { flex-wrap: wrap; }
+  .ideas-item-stats { flex-direction: column; gap: 0.3rem; }
+}
+
 /* ==================== SHARE CARD ==================== */
 #share-overlay {
   position: fixed;
@@ -1073,6 +1403,7 @@ body {
   </div>
   <div style="display:flex;gap:0.5rem;">
     <button class="top-btn" onclick="openWrite()" title="写点什么">✎</button>
+    <button class="top-btn" onclick="goToMedia()" title="自媒体纪实">📊</button>
     <button class="top-btn" onclick="openCards()" title="慢慢想明白的事">✦</button>
     <button class="top-btn" onclick="openSearch()" title="搜索">⌕</button>
     <button class="top-btn" onclick="window.print()" title="打印">⎙</button>
@@ -1388,6 +1719,248 @@ const pages = [
 
       <div class="entry-section-label">【给自己的一句话】</div>
       <div class="entry-quote">原来人生就是一瞬。那这一瞬，你想拿来做什么？<br>你把自己最真实的痛，变成了能触碰别人的东西——这就是你做内容最对的方式。</div>
+    `
+  },
+  {
+    label: '自媒体纪实',
+    content: `
+      <div class="entry-date">CONTENT JOURNEY</div>
+      <div class="entry-title">自媒体探索纪实</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.8;margin-bottom:1.5rem;">从打工人到为自己做事的路上，每一条内容都是脚印。记录数据，不追求数据。</div>
+      <div class="media-tabs">
+        <button class="media-tab active" onclick="switchMediaTab('douyin')">抖音</button>
+        <button class="media-tab" onclick="switchMediaTab('xhs')">小红书</button>
+        <button class="media-tab" onclick="switchMediaTab('summary')">总览</button>
+        <button class="media-tab" onclick="switchMediaTab('ideas')">候选方向</button>
+      </div>
+      <div id="media-douyin" class="media-panel">
+        <div class="media-summary">
+          <div class="media-stat"><span class="media-stat-num" id="dy-total-views">3,900</span><span class="media-stat-label">总播放</span></div>
+          <div class="media-stat"><span class="media-stat-num" id="dy-total-likes">140</span><span class="media-stat-label">总点赞</span></div>
+          <div class="media-stat"><span class="media-stat-num" id="dy-avg-rate">3.6%</span><span class="media-stat-label">平均点赞率</span></div>
+          <div class="media-stat"><span class="media-stat-num" id="dy-total-posts">2</span><span class="media-stat-label">已发布</span></div>
+        </div>
+        <div class="media-list">
+          <div class="media-item">
+            <div class="media-item-header">
+              <span class="media-item-tag">第1篇</span>
+              <span class="media-item-date">5月发布</span>
+            </div>
+            <div class="media-item-title">我将永远爱 Claude，你要🦈了我吗？朋友🥹</div>
+            <div class="media-item-data">
+              <span>📺 2,700 播放</span>
+              <span>❤️ 60 赞</span>
+              <span class="media-rate">点赞率 2.2%</span>
+            </div>
+            <div class="media-item-note">AI+生活的趣味图文，吃新号首推流量红利，播放量最高</div>
+          </div>
+          <div class="media-item">
+            <div class="media-item-header">
+              <span class="media-item-tag">第2篇</span>
+              <span class="media-item-date">5月发布</span>
+            </div>
+            <div class="media-item-title">为南枝和爸爸哭成🐶 / 爷爷，一路走好</div>
+            <div class="media-item-data">
+              <span>📺 1,200 播放</span>
+              <span>❤️ 80 赞</span>
+              <span class="media-rate good">点赞率 6.7%</span>
+            </div>
+            <div class="media-item-note">播放不到第一篇一半，但点赞更多——真情实感戳到人了</div>
+          </div>
+        </div>
+        <div class="media-insight-box">
+          <div class="media-insight-title">💡 发现</div>
+          <div class="media-insight-text">播放量靠平台推流（AI话题有热度），但点赞率靠情感深度。第二篇播放少 55%，点赞反而多 33%——又一次验证：生活驱动的内容，互动质量远高于蹭热点。</div>
+        </div>
+      </div>
+      <div id="media-xhs" class="media-panel" style="display:none">
+        <div class="media-summary">
+          <div class="media-stat"><span class="media-stat-num">600</span><span class="media-stat-label">总播放</span></div>
+          <div class="media-stat"><span class="media-stat-num">21</span><span class="media-stat-label">赞+藏</span></div>
+          <div class="media-stat"><span class="media-stat-num">2</span><span class="media-stat-label">已发布</span></div>
+          <div class="media-stat"><span class="media-stat-num">3.5%</span><span class="media-stat-label">平均互动率</span></div>
+        </div>
+        <div class="media-list">
+          <div class="media-item">
+            <div class="media-item-header">
+              <span class="media-item-tag">第1篇</span>
+              <span class="media-item-date">5月19日</span>
+            </div>
+            <div class="media-item-title">跳槽祛魅：这个工作非换不可吗？</div>
+            <div class="media-item-data">
+              <span>📺 500 播放</span>
+              <span>❤️ 10 赞 + 5 藏</span>
+              <span class="media-rate">互动率 3.0%</span>
+            </div>
+            <div class="media-item-note">《傲骨贤妻》Diane 台词切入——"门开的时候别犹豫"，职场观察类内容在小红书有受众</div>
+          </div>
+          <div class="media-item">
+            <div class="media-item-header">
+              <span class="media-item-tag">第2篇</span>
+              <span class="media-item-date">5月17日</span>
+            </div>
+            <div class="media-item-title">谢谢南枝和爸爸，让我终于为爷爷哭了一场</div>
+            <div class="media-item-data">
+              <span>📺 100 播放</span>
+              <span>❤️ 6 赞</span>
+              <span class="media-rate good">互动率 6.0%</span>
+            </div>
+            <div class="media-item-note">《给阿嬷的情书》观后感，播放低但互动率最高——真情实感永远最能打动人</div>
+          </div>
+        </div>
+        <div class="media-insight-box">
+          <div class="media-insight-title">💡 发现</div>
+          <div class="media-insight-text">跟抖音一样的规律：情感类内容互动率更高。职场内容播放量更大（可能是标签流量），但"写自己"的内容更能留住人。小红书图文竞争卷，但内容方向没错——继续生活驱动。</div>
+        </div>
+      </div>
+      <div id="media-summary" class="media-panel" style="display:none">
+        <div class="media-summary">
+          <div class="media-stat"><span class="media-stat-num">4</span><span class="media-stat-label">总发布</span></div>
+          <div class="media-stat"><span class="media-stat-num">4,500</span><span class="media-stat-label">总播放</span></div>
+          <div class="media-stat"><span class="media-stat-num">161</span><span class="media-stat-label">赞+藏</span></div>
+          <div class="media-stat"><span class="media-stat-num">2篇</span><span class="media-stat-label">平台</span></div>
+        </div>
+        <div class="media-chart-label">平台对比</div>
+        <div class="media-compare">
+          <div class="compare-row">
+            <span class="compare-platform">抖音</span>
+            <div class="compare-bar-bg">
+              <div class="compare-bar dy" style="width:85%"></div>
+            </div>
+            <span class="compare-val">3,900 播放 / 140 赞</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-platform">小红书</span>
+            <div class="compare-bar-bg">
+              <div class="compare-bar xhs" style="width:15%"></div>
+            </div>
+            <span class="compare-val">600 播放 / 21 赞+藏</span>
+          </div>
+        </div>
+        <div class="media-chart-label" style="margin-top:1.5rem;">核心结论</div>
+        <div class="media-conclusion">
+          <div class="conclusion-item"><span class="conclusion-num">1</span>内容方式已验证：<b>生活驱动 > 选题驱动</b>（双平台一致）</div>
+          <div class="conclusion-item"><span class="conclusion-num">2</span>抖音图文有红利，情感类跑得动；小红书职场标签有流量</div>
+          <div class="conclusion-item"><span class="conclusion-num">3</span>情感内容互动率最高——两篇"写自己"的都验证了</div>
+          <div class="conclusion-item"><span class="conclusion-num">4</span>下一步：保持频率，尝试跨平台分发同一内容的不同形态</div>
+        </div>
+      </div>
+      <div id="media-ideas" class="media-panel" style="display:none">
+        <div class="ideas-date">📅 每日更新 · 5月19日</div>
+
+        <div class="media-chart-label" style="margin-top:0.5rem;">历史高表现选题</div>
+        <div class="ideas-list">
+          <div class="ideas-item">
+            <div class="ideas-item-left">
+              <span class="ideas-rank ideas-rank-hot">🔥</span>
+              <div class="ideas-item-info">
+                <div class="ideas-item-title">《给阿嬷的情书》观后感 / 亲人离世</div>
+                <div class="ideas-item-desc">真情实感型——双平台互动率最高（抖音6.7%、小红书6.0%）</div>
+              </div>
+            </div>
+            <div class="ideas-item-stats">
+              <span class="ideas-stat">抖音 1,200播放 / 80赞</span>
+              <span class="ideas-stat">小红书 100播放 / 6赞</span>
+            </div>
+          </div>
+          <div class="ideas-item">
+            <div class="ideas-item-left">
+              <span class="ideas-rank ideas-rank-warm">📈</span>
+              <div class="ideas-item-info">
+                <div class="ideas-item-title">AI + 生活日常</div>
+                <div class="ideas-item-desc">趣味型——播放量最高（抖音2,700），蹭AI话题有推流</div>
+              </div>
+            </div>
+            <div class="ideas-item-stats">
+              <span class="ideas-stat">抖音 2,700播放 / 60赞</span>
+            </div>
+          </div>
+          <div class="ideas-item">
+            <div class="ideas-item-left">
+              <span class="ideas-rank ideas-rank-warm">📈</span>
+              <div class="ideas-item-info">
+                <div class="ideas-item-title">跳槽祛魅 / 职场观察</div>
+                <div class="ideas-item-desc">观点型——小红书标签流量好（500播放），职场话题有受众</div>
+              </div>
+            </div>
+            <div class="ideas-item-stats">
+              <span class="ideas-stat">小红书 500播放 / 10赞+5藏</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-chart-label" style="margin-top:1.5rem;">平台热门话题</div>
+        <div class="ideas-trending">
+          <div class="trending-platform">
+            <div class="trending-platform-name">抖音</div>
+            <div class="trending-topics">
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#520表白日</span>
+                <span class="trending-topic-heat">🔥🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#小满节气</span>
+                <span class="trending-topic-heat">🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+              <div class="trending-topic">
+                <span class="trending-topic-tag">新</span>
+                <span class="trending-topic-name">#AI图文创作</span>
+                <span class="trending-topic-heat">🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+            </div>
+          </div>
+          <div class="trending-platform">
+            <div class="trending-platform-name">小红书</div>
+            <div class="trending-topics">
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#520礼物推荐</span>
+                <span class="trending-topic-heat">🔥🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#打工人日常</span>
+                <span class="trending-topic-heat">🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+              <div class="trending-topic">
+                <span class="trending-topic-tag">新</span>
+                <span class="trending-topic-name">#人生感悟图文</span>
+                <span class="trending-topic-heat">🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+            </div>
+          </div>
+          <div class="trending-platform">
+            <div class="trending-platform-name">微博</div>
+            <div class="trending-topics">
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#520怎么过</span>
+                <span class="trending-topic-heat">🔥🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+              <div class="trending-topic">
+                <span class="trending-topic-tag">热</span>
+                <span class="trending-topic-name">#年轻人离职原因</span>
+                <span class="trending-topic-heat">🔥🔥</span>
+                <a class="trending-topic-link" href="#" onclick="return false">头部帖子 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-insight-box" style="margin-top:1.5rem;">
+          <div class="media-insight-title">🎯 今日建议</div>
+          <div class="media-insight-text">520在即，情感类内容窗口期。结合"生活驱动"的方式——不是硬蹭热点，而是找一个属于自己的520瞬间（可以是孤独的、可以是意外的温暖），图文发抖音+小红书双平台。职场类可以先攒着，等下周热度回来再发。</div>
+        </div>
+      </div>
     `
   },
   {
@@ -2053,6 +2626,19 @@ document.addEventListener('keydown', e => {
 // ===== PWA SERVICE WORKER =====
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+// ===== MEDIA TAB SWITCH =====
+function switchMediaTab(tab) {
+  document.querySelectorAll('.media-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.media-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('media-' + tab).style.display = 'block';
+  event.target.classList.add('active');
+}
+
+function goToMedia() {
+  const idx = pages.findIndex(p => p.label === '自媒体纪实');
+  if (idx > -1) { currentPage = idx; renderPage(); }
 }
 </script>
 </body>
