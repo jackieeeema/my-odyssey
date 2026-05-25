@@ -900,6 +900,46 @@ body {
 }
 .gate-error.show { opacity: 1; }
 
+/* ===== ODYSSEY CHAPTERS ===== */
+.odyssey-chapter {
+  position: relative;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  background: rgba(10,13,20,0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  border-left: 3px solid rgba(107,140,206,0.3);
+}
+.odyssey-chapter-num {
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+  font-weight: 200;
+  color: rgba(107,140,206,0.12);
+  line-height: 1;
+}
+.odyssey-chapter-age {
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.3rem;
+}
+.odyssey-chapter-title {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.odyssey-chapter-mode {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
 /* ==================== MEDIA TRACKER ==================== */
 .media-tabs {
   display: flex;
@@ -1605,6 +1645,51 @@ const pages = [
             "奥德修斯航行了十年才到家，<br>我也要走好自己的那段路。"
           </div>
         </div>
+      </div>
+    `
+  },
+  {
+    label: '序章',
+    content: `
+      <div class="entry-date">PROLOGUE</div>
+      <div class="entry-title">为什么叫「奥德赛」</div>
+      <div class="entry-body" style="font-size:0.85rem;color:var(--text-muted);line-height:1.8;margin-bottom:1.5rem;">回头想，我的人生经历过好几次奥德赛时期——迷茫失意，不知去往何处。每一次，都是"默认路径"断了，我在问自己：我到底要不要走别人给的路？</div>
+
+      <div class="odyssey-chapter">
+        <div class="odyssey-chapter-num">I</div>
+        <div class="odyssey-chapter-age">16岁</div>
+        <div class="odyssey-chapter-title">窗边</div>
+        <div class="entry-body">高中毕业前，突然对每天高强度的学习感到厌倦，不知道学习的意义是什么。甚至走进教室想直接从窗户跳下去。后面慢慢熬过去，给自己一个DDL——先考完再说。最终确实考得不好，但毅然没有选择复读。</div>
+        <div class="entry-body" style="font-style:italic;color:var(--text-muted);font-size:0.82rem;">那段时间读了史铁生的《我与地坛》。</div>
+        <div class="odyssey-chapter-mode">模式：熬过去</div>
+      </div>
+
+      <div class="odyssey-chapter">
+        <div class="odyssey-chapter-num">II</div>
+        <div class="odyssey-chapter-age">20岁</div>
+        <div class="odyssey-chapter-title">路口</div>
+        <div class="entry-body">大学毕业前，觉得人生的意义不知道在哪。毕业之后工作赚钱结婚生子的生活完全没有吸引力。于是选择放弃考研，直接开始工作——先独立再说。</div>
+        <div class="odyssey-chapter-mode">模式：跳过去</div>
+      </div>
+
+      <div class="odyssey-chapter">
+        <div class="odyssey-chapter-num">III</div>
+        <div class="odyssey-chapter-age">32岁</div>
+        <div class="odyssey-chapter-title">旷野</div>
+        <div class="entry-body">工作之后蛮少思考人生的意义，独立赚钱让自己能经历不同的生活。但今年被迫经历职场挫折之后，觉得再换一份工作已经解决不了问题——A坑B坑都是坑，都要被迫处理工作中各种问题，而这并不是我想要的生活。</div>
+        <div class="entry-body">每天时常问自己：如果不打工可以吗？会不会好一点？不打工的出路会在哪里？</div>
+        <div class="entry-body" style="color:var(--accent);font-size:0.85rem;">而我现在并没有答案。</div>
+        <div class="odyssey-chapter-mode">模式：自己造一条路</div>
+      </div>
+
+      <div class="entry-divider">— ✦ —</div>
+
+      <div class="entry-body" style="text-align:center;color:var(--text-secondary);font-size:0.85rem;line-height:2;">
+        16岁，熬过去<br>
+        20岁，跳过去<br>
+        32岁，自己造一条路<br><br>
+        三次递进，每一次都比上一次更主动。<br>
+        <span style="color:var(--text-muted);font-size:0.78rem;">也许奥德赛不是一个时期，而是一种方式。</span>
       </div>
     `
   },
